@@ -15,7 +15,9 @@ export class ReactiveFormsComponent implements OnInit {
   })
 
   public submitForm() {
-    console.log(this.registerForm.value)
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value)
+    }
   }
 
   ngOnInit(): void {}
