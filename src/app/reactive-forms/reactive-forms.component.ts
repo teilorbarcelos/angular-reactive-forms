@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-reactive-forms',
@@ -10,7 +10,7 @@ export class ReactiveFormsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   public registerForm: FormGroup = this.formBuilder.group({
-    firstName: [''],
+    firstName: ['', Validators.required],
     lastName: [''],
   })
 
