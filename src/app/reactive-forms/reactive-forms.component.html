@@ -15,7 +15,31 @@
   <br />
   <label>
     Sobrenome:
-    <input type="text" formControlName="lastName" />
+    <input type="text" formControlName="lastName" maxlength="15" />
+    <span
+      *ngIf="
+        registerForm.get('lastName')?.errors &&
+        registerForm.get('lastName')?.touched
+      "
+      class="input-error"
+    >
+      Sobrenome deve ter no mínimo
+      {{ registerForm.get('lastName')?.errors?.['minlength'].requiredLength }}
+      dígitos.
+    </span>
+  </label>
+  <br />
+  <label>
+    E-mail:
+    <input type="email" formControlName="email" maxlength="15" />
+    <span
+      *ngIf="
+        registerForm.get('email')?.errors && registerForm.get('email')?.touched
+      "
+      class="input-error"
+    >
+      Digite um e-mail válido.
+    </span>
   </label>
 
   <p>
@@ -23,6 +47,7 @@
     {{ registerForm.get('firstName')?.errors | json }}
     {{ registerForm.get('firstName')?.touched | json }}
     {{ registerForm.get('firstName')?.dirty | json }}
+    {{ registerForm.get('lastName')?.errors | json }}
   </p>
 
   <button [disabled]="registerForm.invalid">Enviar</button>

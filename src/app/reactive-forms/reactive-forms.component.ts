@@ -11,7 +11,8 @@ export class ReactiveFormsComponent implements OnInit {
 
   public registerForm: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],
-    lastName: [''],
+    lastName: ['', [Validators.required, Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.pattern(/.+@.+\..+/)]], // Validators.email
   })
 
   public submitForm() {
